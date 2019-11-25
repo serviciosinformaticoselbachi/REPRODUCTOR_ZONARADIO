@@ -1,37 +1,124 @@
-## Welcome to GitHub Pages
+<!DOCTYPE html>
+<html>
 
-You can use the [editor on GitHub](https://github.com/serviciosinformaticoselbachi/REPRODUCTOR_ZONARADIO/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+<head>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0">
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+<head>
 
-```markdown
-Syntax highlighted code block
+	<title>LaRED 24hs</title>
+    <style type="text/css">
+body {
+  background-color: #000000;
+}
+</style>
 
-# Header 1
-## Header 2
-### Header 3
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Teko" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
 
-- Bulleted
-- List
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+     <script type="text/javascript" src="js/jquery.js"></script>
+     <script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
+    
+	<script type="text/javascript">
+      
+        $(document).ready(function(){
+            var stream = {
+            title: "LaRED 24hs",
+            mp3: "http://stream.zeno.fm/gtx2dhzgvbruv"
+        },
+        ready = false;
+          $("#jquery_jplayer_1").jPlayer({
+          ready: function (event) {
+            ready = true;
+                $(this).jPlayer("setMedia", stream).jPlayer("play");
+  
+            },
+            pause: function() {
+                $(this).jPlayer("clearMedia");
+            },
+            error: function(event) {
+                if(ready && event.jPlayer.error.type === $.jPlayer.error.URL_NOT_SET) {
+                    
+                    $(this).jPlayer("setMedia", stream).jPlayer("play");
+                }
+            },
+            swfPath: "/js",
+            supplied: "mp3",
+            preload: "none",
+            wmode: "window",
+            keyEnabled: true,
+            cssSelectorAncestor: "",
+            cssSelector: {
+            play: "#play",
+            pause: "#pause",
+            },
+        });
+      });
+    </script>
+      
 
-1. Numbered
-2. List
+</head>
+<body>
 
-**Bold** and _Italic_ and `Code` text
+  
+          <div align="left"></div>
+          <div align="left"></div>
+          <div id="player">
+          
+                <a href="javascript:;" id="play"></a><a href="javascript:;" id="pause"></a>
+                <div id="titulo">
+                <h3>Zonaradio Online</h3>
+                </div>
+          		
+                 
+                 <div id="song" class="song"><marquee scrollamount="4" behavior="scroll" direction="left"><span id="current-track">DE MARTES A VIERNES EN VIVO DESDE LAS 15:00HS +598 94 911 721     ::: ((( MUSICA Y COMUNICACIÓN ))) :::</span></marquee></div>
 
-[Link](url) and ![Image](src)
-```
+                
+                <div id="animation">
+                  <div align="left"><img src="img/ecualizador.gif" alt="efec" width="220" height="52
+"></div>
+                </div>
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+                <div style="text-align:center; padding-top: 160px;">
+                 <ul style="list-style:none; text-align:center; padding-left:0;">
+                 <li style="display:inline;"><a target="_blank" href="https://www.facebook.com/ELTRUEQUEENRADIO/"><img src="iconos-sociales/facebook.png" border="0"/></a></li>
+                 <li style="display:inline; margin-left:5px;"><a target="_blank" href="http://www.twitter.com/"><img src="iconos-sociales/twitter.png" border="0"/></a></li>
+                 <li style="display:inline; margin-left:5px;"><a target="_blank" href="https://wa.me/59893422446?text=Escucho%20LaRED%F0%9F%94%8A"><img src="iconos-sociales/google.png" border="0"/></a></li>
+                 <li style="display:inline; margin-left:5px;"><a target="_blank" href="https://www.youtube.com/channel/UC9FKWsY9WETE3s_eVEXAcDQ"><img src="iconos-sociales/youtube.png" border="0"/></a></li>
+                 <li style="display:inline; margin-left:5px;"><a target="_blank" href="http://www.instagram.com/"><img src="iconos-sociales/instagram.png" border="0"/></a></li></ul>
+                </div>
+                
+</div>
+          
+  
+  
+ 		  <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+          
+<script type="text/javascript">
+function radioTitle()
+{
+$.ajax({
+    url: 'current-song.php',
+    type: 'GET',
+    cache: false,
+    success: function(result) {
+    $('#current-track').html(result);
+    
+    }
+});
+}
+setTimeout(function(){radioTitle();}, 2000);
+setInterval(function(){radioTitle();}, 10000);
+</script>                
+  
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/serviciosinformaticoselbachi/REPRODUCTOR_ZONARADIO/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+</body>
+
+</html>
